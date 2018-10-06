@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { NbThemeModule, NbStepperModule, NbLayoutModule } from '@nebular/theme';
+import { NbLayoutModule, NbThemeModule, NbStepperModule } from '@nebular/theme';
+
 
 import { APP_ROUTES } from './app.router';
 import { NebularControllersModule } from './modules/nebular-controllers/nebular-controllers.module';
@@ -11,7 +12,9 @@ import { NebularStepperComponent } from './components/nebular-stepper/nebular-st
 import { NebularFlipCardComponent } from './components/nebular-flip-card/nebular-flip-card.component';
 import { RootComponent } from './components/root/root.component';
 
-
+import { CoreModule } from './@core/core.module';
+import { ThemeModule } from './@theme/theme.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports:      [ 
@@ -20,7 +23,7 @@ import { RootComponent } from './components/root/root.component';
     NebularControllersModule,
     RouterModule.forRoot([ ...APP_ROUTES ]),
     NbLayoutModule,
-    NbThemeModule.forRoot({ name: 'default' }),
+    NbThemeModule.forRoot({ name: 'cosmic' }),
     NbStepperModule
     ],
   declarations: [ RootComponent ],
