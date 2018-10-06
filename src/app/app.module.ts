@@ -1,32 +1,36 @@
-import { NgModule } from '@angular/core';
+/**
+ * @license
+ * Copyright Akveo. All Rights Reserved.
+ * Licensed under the MIT License. See License.txt in the project root for license information.
+ */
+import { APP_BASE_HREF } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { NbLayoutModule, NbThemeModule, NbStepperModule } from '@nebular/theme';
-
-
-import { APP_ROUTES } from './app.router';
-import { NebularControllersModule } from './modules/nebular-controllers/nebular-controllers.module';
-import { HomeComponent } from './components/home/home.component';
-import { NebularStepperComponent } from './components/nebular-stepper/nebular-stepper.component';
-import { NebularFlipCardComponent } from './components/nebular-flip-card/nebular-flip-card.component';
-import { RootComponent } from './components/root/root.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './@core/core.module';
+
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  imports:      [ 
-    BrowserModule, 
-    FormsModule,    
-    NebularControllersModule,
-    RouterModule.forRoot([ ...APP_ROUTES ]),
-    NbLayoutModule,
-    NbThemeModule.forRoot({ name: 'cosmic' }),
-    NbStepperModule
-    ],
-  declarations: [ RootComponent ],
-  bootstrap:    [ RootComponent ]
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    AppRoutingModule,
+
+    NgbModule.forRoot(),
+    ThemeModule.forRoot(),
+    CoreModule.forRoot(),
+  ],
+  bootstrap: [AppComponent],
+  providers: [
+    { provide: APP_BASE_HREF, useValue: '/' },
+  ],
 })
-export class AppModule { }
+export class AppModule {
+}
